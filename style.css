@@ -1,0 +1,24 @@
+#title{
+    color: white;
+    text-transform: uppercase;
+    
+}
+#create{
+    float: right;
+}
+.fa-circle-plus{
+    margin-right: 5px;
+}
+.table-bordered{
+    background-color: black;
+}
+#btnCancel{
+    background-color: red;
+    color: white;
+}
+#update{
+    float: left;
+}
+#delete{
+    float:right;
+}
