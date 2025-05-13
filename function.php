@@ -59,11 +59,11 @@ function readData()
     try {
         $sql = "SELECT * FROM `tbl_product` WHERE status = 1 ORDER BY id ASC";
         $result = $connection->query($sql);
-       $i = 1;
+        $i = 1;
         while ($data = mysqli_fetch_assoc($result)) {
             echo '
             <tr>
-                <td>' . $i++ . '</td>
+                <td>' . $data['id'] . '</td>
                 <td>' . $data['name'] . '</td>
                 <td>' . $data['qty'] . '</td>
                 <td>$' . $data['price'] . '</td>
@@ -74,12 +74,12 @@ function readData()
                     <button id="openUpdate" class="btn btn-warning mx-2" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Update</button>
                     <button type="button" 
-        class="btn btn-danger openDeleteBtn" 
-        data-id="' . $data['id'] . '" 
-        data-bs-toggle="modal" 
-        data-bs-target="#exampleModalDelete">
-    Delete
-</button>
+                            class="btn btn-danger openDeleteBtn" 
+                            data-id="' . $data['id'] . '" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#exampleModalDelete">
+                        Delete
+                    </button>
 
                 </td>
             </tr>
@@ -89,7 +89,6 @@ function readData()
         //throw $th;
     }
 }
-
 
 function deleteData()
 {
@@ -119,7 +118,6 @@ function deleteData()
     }
 }
 
-
 deleteData();
 
 function updateData()
@@ -130,6 +128,7 @@ function updateData()
         $name = $_POST['name'];
         $qty = $_POST['qty'];
         $price = $_POST['price'];
+        
         if (!empty($_FILES['thumbnail']['name'])) {
             $thumbnail = rand(1, 100000) . '-' . $_FILES['thumbnail']['name'];
             move_uploaded_file($_FILES['thumbnail']['tmp_name'], 'image/' . $thumbnail);
